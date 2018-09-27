@@ -3,11 +3,6 @@
 #include "mem.h"
 #include "cJSON.h"
 
-#define malloc pvPortMalloc
-#define free vPortFree
-
-static os_timer_t ptimer;
-
 /******************************************************************************
  * FunctionName : user_rf_cal_sector_set
  * Description  : SDK just reversed 4 sectors, used for rf init data and paramters.
@@ -62,9 +57,6 @@ user_rf_cal_sector_set(void)
 
 void ICACHE_FLASH_ATTR user_init(void)
 {
-
-    gpio_init();
-
     uart_init(115200, 115200);
     os_printf("SDK version:%s\n", system_get_sdk_version());
 
